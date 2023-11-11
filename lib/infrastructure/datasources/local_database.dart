@@ -12,7 +12,7 @@ class DbFunctions {
   Future<void> deleteTask(int id) async {
     final taskDb = await Hive.openBox<TaskModel>('task_db');
     await taskDb.delete(id);
-  }
+  } 
 
   Future<void> updateTask(int id, TaskModel taskModel) async {
     final taskDb = await Hive.openBox<TaskModel>('task_db');

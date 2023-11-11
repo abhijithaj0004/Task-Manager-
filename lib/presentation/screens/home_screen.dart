@@ -16,33 +16,41 @@ class HomeScreen extends StatelessWidget {
         preferredSize: Size.fromHeight(70),
         child: HomeAppBar(),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Hello',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.grey,
-                  fontWeight: FontWeight.bold,
+      body: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/images/containerimage.jpg'),
+                fit: BoxFit.cover,
+                opacity: 210)),
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Hello',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              kHeight20,
-              CategoryCards(),
-              kHeight20,
-              const Text(
-                'Daily Task',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+                kHeight20,
+                CategoryCards(),
+                kHeight20,
+                const Text(
+                  'Daily Task',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              kHeight20,
-              DailyTasks(),
-            ],
+                kHeight20,
+                DailyTasks(),
+              ],
+            ),
           ),
         ),
       ),

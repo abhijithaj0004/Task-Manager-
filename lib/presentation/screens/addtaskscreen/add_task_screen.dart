@@ -27,51 +27,56 @@ class AddTaskScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: Form(
-          key: formKey,
-          child: Column(
-            children: [
-              TaskAddingFields(
-                titleController: titleController,
-                hintTxt: 'Title',
-                errorTxt: 'Title is required',
-              ),
-              kHeight20,
-              TaskAddingFields(
-                titleController: descriptionController,
-                hintTxt: 'Description',
-                errorTxt: 'Description is required',
-              ),
-              kHeight20,
-              TaskAddingFields(
-                titleController: dateController,
-                hintTxt: 'Due Date',
-                errorTxt: 'Due Date is required',
-              ),
-              InkWell(
-                onTap: () {
-                  if (formKey.currentState!.validate()) {
-                    Navigator.of(context).pop();
-                  }
-                },
-                child: const MainContainer(
-                  margin: EdgeInsets.all(20),
-                  padding: EdgeInsets.all(20),
-                  color: primaryColor,
-                  child: Center(
-                    child: Text(
-                      'Add',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+        child: Container(
+          decoration:const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/images/containerimage.jpg'),
+                  fit: BoxFit.cover,
+                  opacity: 230)),
+          child: Form(
+            key: formKey,
+            child: Column(
+              children: [
+                TaskAddingFields(
+                  titleController: titleController,
+                  hintTxt: 'Title',
+                  errorTxt: 'Title is required',
+                ),
+                kHeight20,
+                TaskAddingFields(
+                  titleController: descriptionController,
+                  hintTxt: 'Description',
+                  errorTxt: 'Description is required',
+                ),
+                kHeight20,
+                TaskAddingFields(
+                  titleController: dateController,
+                  hintTxt: 'Due Date',
+                  errorTxt: 'Due Date is required',
+                ),
+                InkWell(
+                  onTap: () {
+                    if (formKey.currentState!.validate()) {
+                      Navigator.of(context).pop();
+                    }
+                  },
+                  child: const MainContainer(
+                    margin: EdgeInsets.all(20),
+                    padding: EdgeInsets.all(20),
+                    color: primaryColor,
+                    child: Center(
+                      child: Text(
+                        'Add',
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
                     ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 }
-
-
