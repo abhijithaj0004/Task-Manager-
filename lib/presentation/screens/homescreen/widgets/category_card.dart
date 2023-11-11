@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:taskmanager/core/constants_size.dart';
-import 'package:taskmanager/presentation/screens/widgets/home_model.dart';
-import 'package:taskmanager/presentation/screens/widgets/main_container.dart';
+import 'package:taskmanager/presentation/screens/homescreen/widgets/home_model.dart';
+import 'package:taskmanager/presentation/screens/homescreen/widgets/main_container.dart';
 
 class CategoryCards extends StatelessWidget {
   CategoryCards({super.key});

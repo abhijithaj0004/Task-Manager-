@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "122796396357",
+    "project_id": "task-manager-max2d",
+    "storage_bucket": "task-manager-max2d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:122796396357:android:aea30b317f24010581b82c",
+        "android_client_info": {
+          "package_name": "com.example.taskmanager"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZF8TFXLaTupKr45M4Hh82j6lK_-mEGDM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

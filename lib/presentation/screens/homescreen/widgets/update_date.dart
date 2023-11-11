@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:taskmanager/cubit/datepickercubit/date_picker_cubit.dart';
 import 'package:intl/intl.dart';
 import 'package:taskmanager/cubit/updatelistcubit/update_list_cubit.dart';
 
-class DatePicker extends StatelessWidget {
-  const DatePicker({
+class DatePickerUpdate extends StatelessWidget {
+  const DatePickerUpdate({
     super.key,
+    required this.oldDate,
   });
-
+  final String oldDate;
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DatePickerCubit, DatePickerState>(
+    context.read<UpdateListCubit>().state.date = oldDate;
+    return BlocBuilder<UpdateListCubit, UpdateListState>(
       builder: (context, state) {
         return InkWell(
           onTap: () {
-            showDueDatePicker(context, state.dateData);
+            showDueDatePicker(context, state.date);
           },
           child: Container(
             width: double.infinity,
@@ -24,7 +25,7 @@ class DatePicker extends StatelessWidget {
                 border: Border.all(color: Colors.grey),
                 borderRadius: BorderRadius.circular(15)),
             child: Text(
-              state.dateData,
+              state.date,
               style: const TextStyle(
                   fontSize: 20, color: Color.fromARGB(255, 94, 93, 93)),
             ),
@@ -42,9 +43,7 @@ class DatePicker extends StatelessWidget {
       lastDate: DateTime(2030),
     ).then((value) {
       String formattedDate = DateFormat('yyyy-MM-dd').format(value!);
-      context.read<DatePickerCubit>().showDate(formattedDate.toString());
+      context.read<UpdateListCubit>().setaNewDate(formattedDate);
     });
   }
 }
-
-

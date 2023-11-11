@@ -1,5 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:taskmanager/cubit/task_manager_cubit_cubit.dart';
+import 'package:taskmanager/cubit/tasklistcubit/task_manager_cubit_cubit.dart';
 import 'package:taskmanager/domain/models/task_model.dart';
 
 class DbFunctions {

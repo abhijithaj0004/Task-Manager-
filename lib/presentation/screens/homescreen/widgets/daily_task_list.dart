@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:taskmanager/core/constant_colors.dart';
-import 'package:taskmanager/cubit/task_manager_cubit_cubit.dart';
+import 'package:taskmanager/cubit/tasklistcubit/task_manager_cubit_cubit.dart';
+import 'package:taskmanager/presentation/screens/homescreen/widgets/edit_task.dart';
 
 class DailyTasks extends StatelessWidget {
   const DailyTasks({super.key});
@@ -17,9 +18,20 @@ class DailyTasks extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: state.taskList.length,
                 itemBuilder: (context, index) {
+                  //slidable widget is used for delete the task if the user scroll the tile they can see a delete button
                   return Slidable(
                     endActionPane:
                         ActionPane(motion: const StretchMotion(), children: [
+                      SlidableAction(
+                        foregroundColor: Colors.white,
+                        backgroundColor: secondaryColor,
+                        onPressed: (context) {
+                          context
+                              .read<TaskManagerCubit>()
+                              .deleteTask(state.taskList[index].key);
+                        },
+                        icon: Icons.delete,
+                      ),
                       SlidableAction(
                         foregroundColor: Colors.white,
                         backgroundColor: secondaryColor,
@@ -27,13 +39,20 @@ class DailyTasks extends StatelessWidget {
                             topRight: Radius.circular(15),
                             bottomRight: Radius.circular(15)),
                         onPressed: (context) {
-                          context
-                              .read<TaskManagerCubit>()
-                              .deleteTask(state.taskList[index].key);
+                          showDialog(
+                            context: context,
+                            builder: (context) => EditTask(
+                              oldtitle: state.taskList[index].title,
+                              olddes: state.taskList[index].description,
+                              id: state.taskList[index].key,
+                              oldDate: state.taskList[index].dueDate,
+                            ),
+                          );
                         },
-                        icon: Icons.delete,
+                        icon: Icons.edit,
                       )
                     ]),
+                    //this container is for listing the required fields
                     child: Container(
                       margin: const EdgeInsets.symmetric(vertical: 10),
                       padding: const EdgeInsets.all(10),
@@ -47,11 +66,12 @@ class DailyTasks extends StatelessWidget {
                             color: Color.fromARGB(161, 123, 133, 249),
                           ),
                           activeColor: const Color.fromARGB(161, 123, 133, 249),
-                          value: true,
+                          value: false,
                           onChanged: (value) {},
                         ),
                         title: Text(state.taskList[index].title),
-                        subtitle: Text(state.taskList[index].description),
+                        subtitle: SizedBox(
+                            child: Text(state.taskList[index].description)),
                         trailing: Text(state.taskList[index].dueDate),
                       ),
                     ),

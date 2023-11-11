@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class TaskAddingFields extends StatelessWidget {
-  const TaskAddingFields({
+class TaskFields extends StatelessWidget {
+  const TaskFields({
     super.key,
     required this.titleController,
     required this.errorTxt,

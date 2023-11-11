@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:taskmanager/core/constant_colors.dart';
 import 'package:taskmanager/core/constants_size.dart';
-import 'package:taskmanager/cubit/task_manager_cubit_cubit.dart';
+import 'package:taskmanager/cubit/tasklistcubit/task_manager_cubit_cubit.dart';
 import 'package:taskmanager/presentation/screens/addtaskscreen/add_task_screen.dart';
-import 'package:taskmanager/presentation/screens/widgets/category_card.dart';
-import 'package:taskmanager/presentation/screens/widgets/daily_task_list.dart';
-import 'package:taskmanager/presentation/screens/widgets/home_app_bar.dart';
+import 'package:taskmanager/presentation/screens/homescreen/widgets/category_card.dart';
+import 'package:taskmanager/presentation/screens/homescreen/widgets/daily_task_list.dart';
+import 'package:taskmanager/presentation/screens/homescreen/widgets/home_app_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
             image: DecorationImage(
                 image: AssetImage('assets/images/containerimage.jpg'),
                 fit: BoxFit.cover,
-                opacity: 210)),
+                opacity: 235)),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: SingleChildScrollView(
@@ -52,7 +52,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 kHeight20,
-                DailyTasks(),
+                const DailyTasks(),
               ],
             ),
           ),
@@ -65,7 +65,10 @@ class HomeScreen extends StatelessWidget {
             builder: (context) => AddTaskScreen(),
           ));
         },
-        child: const Icon(Icons.add),
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
     );
   }
