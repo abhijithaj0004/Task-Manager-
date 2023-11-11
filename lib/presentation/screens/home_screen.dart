@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:taskmanager/core/constant_colors.dart';
 import 'package:taskmanager/core/constants_size.dart';
+import 'package:taskmanager/cubit/task_manager_cubit_cubit.dart';
 import 'package:taskmanager/presentation/screens/addtaskscreen/add_task_screen.dart';
 import 'package:taskmanager/presentation/screens/widgets/category_card.dart';
 import 'package:taskmanager/presentation/screens/widgets/daily_task_list.dart';
 import 'package:taskmanager/presentation/screens/widgets/home_app_bar.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    context.read<TaskManagerCubit>().getAllTask();
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(70),
         child: HomeAppBar(),
       ),
       body: Container(
+        height: double.infinity,
         decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/images/containerimage.jpg'),
