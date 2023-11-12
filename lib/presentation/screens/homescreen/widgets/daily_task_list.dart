@@ -39,15 +39,14 @@ class DailyTasks extends StatelessWidget {
                             topRight: Radius.circular(15),
                             bottomRight: Radius.circular(15)),
                         onPressed: (context) {
-                          showDialog(
-                            context: context,
+                          Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => EditTask(
                               oldtitle: state.taskList[index].title,
                               olddes: state.taskList[index].description,
                               id: state.taskList[index].key,
                               oldDate: state.taskList[index].dueDate,
                             ),
-                          );
+                          ));
                         },
                         icon: Icons.edit,
                       )
