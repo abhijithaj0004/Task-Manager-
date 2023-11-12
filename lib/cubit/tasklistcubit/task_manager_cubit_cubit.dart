@@ -32,4 +32,11 @@ class TaskManagerCubit extends Cubit<TaskManagerState> {
     await taskDb.put(id, taskModel);
     getAllTask();
   }
+
+  Future<void> setTheState(int id, TaskModel taskModel) async {
+    final taskDb = await Hive.openBox<TaskModel>('task_db');
+    await taskDb.put(id, taskModel);
+    getAllTask();
+  }
+  
 }

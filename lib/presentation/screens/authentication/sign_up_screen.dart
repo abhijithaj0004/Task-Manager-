@@ -135,7 +135,7 @@ class SignUpScreen extends StatelessWidget {
                     InkWell(
                         onTap: () {
                           if (fomrKey.currentState!.validate()) {
-                            authFn.SignUp(
+                            authFn.signUp(
                                 emailController.text.trim(),
                                 passwordController.text.trim(),
                                 confirmPassWordController.text.trim(),

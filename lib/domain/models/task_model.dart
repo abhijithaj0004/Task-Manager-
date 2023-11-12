@@ -1,5 +1,6 @@
 import 'package:hive_flutter/hive_flutter.dart';
- part 'task_model.g.dart';
+part 'task_model.g.dart';
+
 @HiveType(typeId: 1)
 class TaskModel extends HiveObject {
   @HiveField(0)
@@ -8,6 +9,11 @@ class TaskModel extends HiveObject {
   final String description;
   @HiveField(2)
   final String dueDate;
-
-  TaskModel({required this.title, required this.description, required this.dueDate});
+  @HiveField(3)
+  bool isCompleted;
+  TaskModel(
+      {required this.title,
+      required this.description,
+      required this.dueDate,
+      required this.isCompleted});
 }

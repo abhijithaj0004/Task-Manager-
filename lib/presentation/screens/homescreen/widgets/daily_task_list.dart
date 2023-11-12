@@ -1,8 +1,10 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:taskmanager/core/constant_colors.dart';
 import 'package:taskmanager/cubit/tasklistcubit/task_manager_cubit_cubit.dart';
+import 'package:taskmanager/domain/models/task_model.dart';
 import 'package:taskmanager/presentation/screens/homescreen/widgets/edit_task.dart';
 
 class DailyTasks extends StatelessWidget {
@@ -60,13 +62,13 @@ class DailyTasks extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: ListTile(
-                        leading: Checkbox(
-                          side: const BorderSide(
-                            color: Color.fromARGB(161, 123, 133, 249),
-                          ),
-                          activeColor: const Color.fromARGB(161, 123, 133, 249),
-                          value: false,
-                          onChanged: (value) {},
+                        //check box
+                        leading: ProgressChecker(
+                          title: state.taskList[index].title,
+                          description: state.taskList[index].description,
+                          date: state.taskList[index].dueDate,
+                          index: state.taskList[index].key,
+                          isCompleted: state.taskList[index].isCompleted,
                         ),
                         title: Text(state.taskList[index].title),
                         subtitle: SizedBox(
@@ -86,6 +88,54 @@ class DailyTasks extends StatelessWidget {
                   ),
                 ),
               );
+      },
+    );
+  }
+}
+
+//this class is used for checking the task is completed or not
+// ignore: must_be_immutable
+class ProgressChecker extends StatefulWidget {
+  ProgressChecker({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.date,
+    required this.index,
+    required this.isCompleted,
+  });
+  final String title;
+  final String description;
+  final String date;
+  final int index;
+  bool isCompleted;
+  @override
+  State<ProgressChecker> createState() => _ProgressCheckerState();
+}
+
+class _ProgressCheckerState extends State<ProgressChecker> {
+  // bool isCompleted = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Checkbox(
+      side: const BorderSide(
+        color: Color.fromARGB(161, 123, 133, 249),
+      ),
+      activeColor: const Color.fromARGB(161, 123, 133, 249),
+      value: widget.isCompleted,
+      onChanged: (value) {
+        // log(isCompleted.toString());
+        setState(() {
+          widget.isCompleted = !widget.isCompleted;
+        });
+        final taskmodel = TaskModel(
+            isCompleted: widget.isCompleted,
+            description: widget.description,
+            title: widget.title,
+            dueDate: widget.date);
+
+        context.read<TaskManagerCubit>().setTheState(widget.index, taskmodel);
       },
     );
   }

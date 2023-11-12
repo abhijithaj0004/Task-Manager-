@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => UpdateListCubit(),
         ),
+        
       ],
       child: MaterialApp(
         theme: ThemeData(fontFamily: 'Montserrat', primarySwatch: Colors.grey),

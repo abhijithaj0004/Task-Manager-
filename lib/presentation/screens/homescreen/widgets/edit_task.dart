@@ -33,7 +33,7 @@ class EditTask extends StatelessWidget {
           backgroundColor: Theme.of(context).scaffoldBackgroundColor),
       body: Container(
         height: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/images/containerimage.jpg'),
                 fit: BoxFit.cover,
@@ -70,14 +70,15 @@ class EditTask extends StatelessWidget {
                         final taskModel = TaskModel(
                             title: newTitle,
                             description: newDes,
-                            dueDate: newdate);
+                            dueDate: newdate,isCompleted: false
+                            );
                         context
                             .read<TaskManagerCubit>()
                             .updateTask(id, taskModel);
                       }
                       Navigator.of(context).pop();
                     },
-                    child: MainContainer(
+                    child:const MainContainer(
                       margin: EdgeInsets.all(20),
                       padding: EdgeInsets.all(20),
                       color: primaryColor,

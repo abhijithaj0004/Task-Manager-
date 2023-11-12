@@ -58,7 +58,7 @@ class AddTaskScreen extends StatelessWidget {
                     errorTxt: 'Description is required',
                   ),
                   kHeight20,
-                  const DatePicker( ),
+                  const DatePicker(),
                   InkWell(
                     onTap: () {
                       if (formKey.currentState!.validate()) {
@@ -71,7 +71,8 @@ class AddTaskScreen extends StatelessWidget {
                           final taskModel = TaskModel(
                               title: title,
                               description: description,
-                              dueDate: date);
+                              dueDate: date,
+                              isCompleted: false);
                           context
                               .read<TaskManagerCubit>()
                               .addNewTask(taskModel);
