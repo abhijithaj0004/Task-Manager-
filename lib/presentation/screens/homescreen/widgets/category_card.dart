@@ -45,14 +45,12 @@ class CategoryCards extends StatelessWidget {
                       if (index == 0) {
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => CategoryListPage(
-                            index1: index,
                             taskList: onGoingList,
                           ),
                         ));
                       } else {
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => CategoryListPage(
-                            index1: index,
                             taskList: completedList,
                           ),
                         ));

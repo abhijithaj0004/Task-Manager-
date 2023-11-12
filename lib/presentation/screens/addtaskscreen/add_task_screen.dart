@@ -5,7 +5,6 @@ import 'package:taskmanager/core/constants_size.dart';
 import 'package:taskmanager/cubit/datepickercubit/date_picker_cubit.dart';
 import 'package:taskmanager/cubit/tasklistcubit/task_manager_cubit_cubit.dart';
 import 'package:taskmanager/domain/models/task_model.dart';
-import 'package:taskmanager/infrastructure/datasources/local_database.dart';
 import 'package:taskmanager/presentation/screens/addtaskscreen/widgets/date_picker.dart';
 import 'package:taskmanager/presentation/screens/addtaskscreen/widgets/task_adding_fields.dart';
 import 'package:taskmanager/presentation/screens/homescreen/widgets/main_container.dart';
@@ -16,7 +15,7 @@ class AddTaskScreen extends StatelessWidget {
   final descriptionController = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
-  final dbFns = DbFunctions();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

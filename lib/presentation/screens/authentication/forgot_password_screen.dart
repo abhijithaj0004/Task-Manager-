@@ -65,7 +65,6 @@ class ForgotPassWordPage extends StatelessWidget {
                             fontSize: 22,
                             color: Color.fromARGB(255, 140, 140, 140))),
                   ),
-
                   kHeight20,
                   InkWell(
                     onTap: () {
@@ -88,20 +87,6 @@ class ForgotPassWordPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // KButton(
-                  //     onClick: () {
-                  //       if (formKey.currentState!.validate()) {
-                  //         authFn.resetPassword(
-                  //             emailController.text.trim(), context);
-                  //       }
-                  //     },
-                  //     label: Center(
-                  //       child: Text(
-                  //         'Reset Password',
-                  //         style:TextStyle(fontSize: 20,color: Colors.white),
-
-                  //       ),
-                  //     ))
                 ],
               ),
             ),

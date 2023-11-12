@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taskmanager/cubit/datepickercubit/date_picker_cubit.dart';
 import 'package:intl/intl.dart';
-import 'package:taskmanager/cubit/updatelistcubit/update_list_cubit.dart';
 
 class DatePicker extends StatelessWidget {
   const DatePicker({
